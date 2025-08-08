@@ -15,7 +15,8 @@ UseCases
 
 -- GetPlan: os usuários podem ver os planos disponíveis;
 
--- AcceptInvite: podem ver, aceitar ou rejeitar convites;
+-- AcceptInvite: aceitar ou rejeitar convites;
+-- GetInvite: podem ver os convites;
 
 -- ColorPixel: pode escolher pintar um pixel com uma posição (x, y);
 -- GetPixel: ver como a tela está, pedir os pixels pintados;
