@@ -11,7 +11,7 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<Role> Roles => Set<Role>();
     public DbSet<Plan> Plans => Set<Plan>();
     public DbSet<GiftCard> GiftCards => Set<GiftCard>();
-    public DbSet<ItemRoom> itemRooms => Set<ItemRoom>();
+    public DbSet<ItemRoom> ItemRooms => Set<ItemRoom>();
 
     protected override void OnModelCreating(ModelBuilder model)
     {
@@ -56,11 +56,11 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
             .HasForeignKey(i => i.Receiverid)
             .OnDelete(DeleteBehavior.NoAction);
 
-        model.Entity<Invite>()
-            .HasOne(i => i.Sender)
-            .WithMany(i => i.Invites)
-            .HasForeignKey(i => i.SenderId)
-            .OnDelete(DeleteBehavior.NoAction);
+        // model.Entity<Invite>()
+        //     .HasOne(i => i.Sender)
+        //     .WithMany(i => i.Invites)
+        //     .HasForeignKey(i => i.SenderId)
+        //     .OnDelete(DeleteBehavior.NoAction);
 
         model.Entity<Role>()
             .HasOne(r => r.ItemRoom)
@@ -68,12 +68,13 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
             .HasForeignKey(r => r.RoomId)
             .OnDelete(DeleteBehavior.NoAction);
 
-        model.Entity<Plan>()
-            .HasOne(p => p.GiftCard)
-            .WithOne(p => p.PlanGiftCard)
-            .OnDelete(DeleteBehavior.NoAction);
+        model.Entity<Plan>();
 
-        model.Entity<GiftCard>();
+        model.Entity<GiftCard>()
+            .HasOne(p => p.PlanGiftCard)
+            .WithMany(p => p.GiftCards)
+            .HasForeignKey(p => p.PlanId)
+            .OnDelete(DeleteBehavior.NoAction);
 
         model.Entity<ItemRoom>();
     }
