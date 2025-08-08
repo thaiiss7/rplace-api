@@ -7,4 +7,5 @@ public class Role
     public Profile RoleProfile { get; set; }
     public Guid RoomId { get; set; }
     public Room RoleRoom { get; set; }
+    public ItemRoom ItemRoom { get; set; }
 }

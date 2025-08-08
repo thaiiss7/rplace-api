@@ -8,5 +8,7 @@ public class Room
     public Guid ProfileId { get; set; }
     public Profile Owner { get; set; } //dono da sala
     public ICollection<Pixel> Pixels { get; set; }
-    public ICollection<Profile> Members { get; set; }
+    public ICollection<Profile> Members { get; set; } = []; //membros
+    public ICollection<Invite> Invites { get; set; } = [];
+    public ItemRoom ItemRoom { get; set; }
 }
