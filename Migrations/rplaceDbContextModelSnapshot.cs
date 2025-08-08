@@ -139,6 +139,9 @@ namespace rplace_api.Migrations
                     b.Property<Guid>("ItemRoomId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -91,6 +91,7 @@ namespace rplace_api.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Link = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PlanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ItemRoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoomID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
