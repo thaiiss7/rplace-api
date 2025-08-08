@@ -1,0 +1,23 @@
+UseCases
+
+-- CreateProfile: pode criar usuários;
+-- EditProfile: pode editar os dados básicos do usuário, exceto a senha;
+-- LoginProfile: faz login ne, obvio;
+-- GetProfile: ver perfis;
+
+-- InvitePlayer: convida um usuário para a sala;
+-- RemovePlayer: remove usuários de uma sala;
+-- PromotePlayer: promove usuários;
+-- GetPlayer: ver os participantes da sala bem como seus níveis de permissão;
+
+-- CreateRoom: pode criar salas;
+-- GetRoom: os usuários podem ver todas as suas salas de desenho com seus respectivos nomes e quem criou aquela sala;
+
+-- GetPlan: os usuários podem ver os planos disponíveis;
+
+-- AcceptInvite: podem ver, aceitar ou rejeitar convites;
+
+-- ColorPixel: pode escolher pintar um pixel com uma posição (x, y);
+-- GetPixel: ver como a tela está, pedir os pixels pintados;
+
+-- UpgradePlan: mudar de planos
