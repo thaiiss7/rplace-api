@@ -12,7 +12,7 @@ using Rplace.Models;
 namespace rplace_api.Migrations
 {
     [DbContext(typeof(rplaceDbContext))]
-    [Migration("20250808192458_InitialModel")]
+    [Migration("20250808193658_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
@@ -141,6 +141,9 @@ namespace rplace_api.Migrations
 
                     b.Property<Guid>("ItemRoomId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()

@@ -1,0 +1,5 @@
+Exemplo: 1+2=3
+
+- Payload: Nesse exemplo o payload seria o valor operado (1 e 2), ou seja, no código seria o pedido;
+- UseCase: Nesse exemplo o usecase seria o operador (+), ou seja, no código seria o que faz a ação;
+- Response: Nesse exemplo o response seria o resultado (3), ou seja, no código seria a entrega/resposta/resultado;
