@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.GetProfile;
+namespace Rplace.UseCase.GetProfile;
 
 public class GetProfilePayload 
 {

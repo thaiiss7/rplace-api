@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.CreateRoom;
+namespace Rplace.UseCase.CreateRoom;
 
 public class CreateRoomResponse(
 

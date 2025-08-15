@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.ColorPixel;
+namespace Rplace.UseCase.ColorPixel;
 
 public class ColorPixelPayload 
 {

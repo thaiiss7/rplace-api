@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.AcceptInvite;
+namespace Rplace.UseCase.AcceptInvite;
 
 public class AcceptInviteUseCase(
     
-)
+);

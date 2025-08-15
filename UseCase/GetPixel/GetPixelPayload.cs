@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.GetPixel;
+namespace Rplace.UseCase.GetPixel;
 
 public class GetPixelPayload 
 {

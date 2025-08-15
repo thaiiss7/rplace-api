@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.GetPlan;
+namespace Rplace.UseCase.GetPlan;
 
 public class GetPlanPayload 
 {

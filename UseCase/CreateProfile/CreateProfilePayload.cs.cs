@@ -1,4 +1,4 @@
-namespace RPLACE-API.UseCase.CreateProfile;
+namespace Rplace.UseCase.CreateProfile;
 
 public class CreateProfilePayload 
 {
