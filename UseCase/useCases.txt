@@ -1,0 +1,93 @@
+UseCases
+
+-- CreateProfile: pode criar usuários;
+    payload: username, email, password, reapetpassword, bio, link, plan
+    usecase: serviço de profile e de password, estabelecer valor do payload para o da classe profile
+    response: nada (feijoada)
+
+-- EditProfile: pode editar os dados básicos do usuário, exceto a senha;
+    payload: 
+    usecase: 
+    response: 
+
+-- LoginProfile: faz login ne, obvio;
+    payload: login e password
+    usecase: hash
+    response: token
+
+-- GetProfile: ver perfis;
+    payload: username
+    usecase: nada
+    response: dados do perfil
+
+---
+
+-- InvitePlayer: convida um usuário para a sala;
+    payload: 
+    usecase: 
+    response: 
+
+-- RemovePlayer: remove usuários de uma sala;
+    payload: 
+    usecase: 
+    response: 
+
+-- PromotePlayer: promove usuários;
+    payload: 
+    usecase: 
+    response: 
+    
+-- GetPlayer: ver os participantes da sala bem como seus níveis de permissão;
+    payload: 
+    usecase: 
+    response: 
+
+---
+
+-- CreateRoom: pode criar salas;
+    payload: 
+    usecase: 
+    response: 
+
+-- GetRoom: os usuários podem ver todas as suas salas de desenho com seus respectivos nomes e quem criou aquela sala;
+    payload: 
+    usecase: 
+    response: 
+
+---
+
+-- GetPlan: os usuários podem ver os planos disponíveis;
+    payload: 
+    usecase: 
+    response: 
+
+---
+
+-- AcceptInvite: aceitar ou rejeitar convites;
+    payload: 
+    usecase: 
+    response: 
+
+-- GetInvite: podem ver os convites;
+    payload: 
+    usecase: 
+    response: 
+
+---
+
+-- ColorPixel: pode escolher pintar um pixel com uma posição (x, y);
+    payload: 
+    usecase: 
+    response: 
+
+-- GetPixel: ver como a tela está, pedir os pixels pintados;
+    payload: 
+    usecase: 
+    response: 
+
+---
+
+-- UpgradePlan: mudar de planos
+    payload: 
+    usecase: 
+    response: 
