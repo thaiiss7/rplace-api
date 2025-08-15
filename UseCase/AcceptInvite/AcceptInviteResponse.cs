@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.AcceptInvite;
 
-public class AcceptInviteResponse(
+public record AcceptInviteResponse(
 
 );

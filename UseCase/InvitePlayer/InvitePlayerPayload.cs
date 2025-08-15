@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.InvitePlayer;
 
-public class InvitePlayerPayload 
+public record InvitePlayerPayload 
 {
 
 }

@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.GetPlayer;
 
-public class GetPlayerResponse(
+public record GetPlayerResponse(
 
 );

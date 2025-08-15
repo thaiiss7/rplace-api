@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.ColorPixel;
 
-public class ColorPixelResponse(
+public record ColorPixelResponse(
 
 );

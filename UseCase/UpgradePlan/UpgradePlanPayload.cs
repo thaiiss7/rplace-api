@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.UpgradePlan;
+namespace Rplace.UseCase.UpgradePlan;
 
-public class UpgradePlanPayload 
+public record UpgradePlanPayload 
 {
 
 }

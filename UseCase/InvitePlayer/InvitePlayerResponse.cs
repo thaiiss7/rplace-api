@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.InvitePlayer;
 
-public class InvitePlayerResponse(
+public record InvitePlayerResponse(
 
 );

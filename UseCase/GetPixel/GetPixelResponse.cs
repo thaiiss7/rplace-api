@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.GetPixel;
 
-public class GetPixelResponse(
+public record GetPixelResponse(
 
 );

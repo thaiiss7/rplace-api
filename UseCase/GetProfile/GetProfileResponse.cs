@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.GetProfile;
 
-public class GetProfileResponse(
+public record GetProfileResponse(
 
 );

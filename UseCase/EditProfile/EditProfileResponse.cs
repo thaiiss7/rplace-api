@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.EditProfile;
 
-public class EditProfileResponse(
+public record EditProfileResponse(
 
 );

@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.CreateRoom;
 
-public class CreateRoomPayload 
+public record CreateRoomPayload 
 {
 
 }

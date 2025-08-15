@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.GetInvite;
 
-public class GetInvitePayload 
+public record GetInvitePayload 
 {
 
 }

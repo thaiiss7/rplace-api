@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.PromotePlayer;
+namespace Rplace.UseCase.PromotePlayer;
 
-public class PromotePlayerPayload 
+public record PromotePlayerPayload 
 {
 
 }

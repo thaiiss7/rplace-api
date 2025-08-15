@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.GetProfile;
 
-public class GetProfilePayload 
+public record GetProfilePayload 
 {
 
 }

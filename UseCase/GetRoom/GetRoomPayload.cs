@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.GetRoom;
 
-public class GetRoomPayload 
+public record GetRoomPayload 
 {
 
 }

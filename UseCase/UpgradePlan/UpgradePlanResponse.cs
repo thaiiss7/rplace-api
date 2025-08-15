@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.UpgradePlan;
+namespace Rplace.UseCase.UpgradePlan;
 
-public class UpgradePlanResponse(
+public record UpgradePlanResponse(
 
 );

@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.GetPlan;
 
-public class GetPlanPayload 
+public record GetPlanPayload 
 {
 
 }

@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.GetPlayer;
 
-public class GetPlayerPayload 
+public record GetPlayerPayload 
 {
 
 }

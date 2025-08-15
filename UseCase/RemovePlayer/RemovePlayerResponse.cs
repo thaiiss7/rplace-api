@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.RemovePlayer;
+namespace Rplace.UseCase.RemovePlayer;
 
-public class RemovePlayerResponse(
+public record RemovePlayerResponse(
 
 );

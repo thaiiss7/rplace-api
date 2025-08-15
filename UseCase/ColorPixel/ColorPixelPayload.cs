@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.ColorPixel;
 
-public class ColorPixelPayload 
+public record ColorPixelPayload 
 {
 
 }

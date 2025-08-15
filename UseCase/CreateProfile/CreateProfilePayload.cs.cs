@@ -1,6 +1,6 @@
 namespace Rplace.UseCase.CreateProfile;
 
-public class CreateProfilePayload 
+public record CreateProfilePayload 
 {
 
 }
