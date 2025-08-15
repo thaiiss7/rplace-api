@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.AcceptInvite;
+namespace Rplace.UseCase.AcceptInvite;
 
-public class AcceptInvitePayload 
+public record AcceptInvitePayload 
 {
 
 }

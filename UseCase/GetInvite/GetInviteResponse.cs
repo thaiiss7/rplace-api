@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.GetInvite;
+namespace Rplace.UseCase.GetInvite;
 
-public class GetInviteResponse(
+public record GetInviteResponse(
 
 );

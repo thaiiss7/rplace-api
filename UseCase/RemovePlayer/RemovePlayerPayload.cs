@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.RemovePlayer;
+namespace Rplace.UseCase.RemovePlayer;
 
-public class RemovePlayerPayload 
+public record RemovePlayerPayload 
 {
 
 }

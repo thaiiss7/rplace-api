@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.GetRoom;
+namespace Rplace.UseCase.GetRoom;
 
-public class GetRoomPayload 
+public record GetRoomPayload 
 {
 
 }

@@ -1,6 +1,6 @@
-namespace RPLACE-API.UseCase.EditProfile;
+namespace Rplace.UseCase.EditProfile;
 
-public class EditProfilePayload 
+public record EditProfilePayload 
 {
 
 }

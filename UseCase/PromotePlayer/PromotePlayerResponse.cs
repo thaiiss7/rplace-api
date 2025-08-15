@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.PromotePlayer;
+namespace Rplace.UseCase.PromotePlayer;
 
-public class PromotePlayerResponse(
+public record PromotePlayerResponse(
 
 );

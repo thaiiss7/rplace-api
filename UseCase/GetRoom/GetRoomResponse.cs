@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.GetRoom;
+namespace Rplace.UseCase.GetRoom;
 
-public class GetRoomResponse(
+public record GetRoomResponse(
 
 );

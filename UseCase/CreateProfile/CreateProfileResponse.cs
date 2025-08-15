@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.CreatProfile;
+namespace Rplace.UseCase.CreatProfile;
 
-public class CreateProfileResponse(
+public record CreateProfileResponse(
 
 );

@@ -1,5 +1,5 @@
-namespace RPLACE-API.UseCase.GetPlan;
+namespace Rplace.UseCase.GetPlan;
 
-public class GetPlanResponse(
+public record GetPlanResponse(
 
 );
