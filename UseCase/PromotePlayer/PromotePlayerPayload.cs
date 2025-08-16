@@ -1,6 +1,5 @@
 namespace Rplace.UseCase.PromotePlayer;
 
-public record PromotePlayerPayload 
-{
+public record PromotePlayerPayload(
 
-}
+);
