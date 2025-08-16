@@ -43,9 +43,10 @@ public static class ProfileEndpoints
         //editar usuário
         app.MapPost("profile/{id}", async (
             Guid id,
+            [FromBody] EditProfilePayload payload,
             [FromServices] EditProfileUseCase useCase) =>
             {
-                var payload = new EditProfilePayload(id);
+                payload = payload with { UserId = id };
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
@@ -55,5 +56,6 @@ public static class ProfileEndpoints
                     (true, _) => Results.Ok()
                 };
             });
+
     }
 }
