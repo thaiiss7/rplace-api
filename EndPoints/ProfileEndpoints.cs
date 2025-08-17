@@ -12,6 +12,7 @@ public static class ProfileEndpoints
     public static void ConfigureProfileEndpoints(this WebApplication app)
     {
         //buscar dados de um usuário
+        //mapget: serve para buscar dados
         app.MapGet("profile/{username}", async (
             string username,
             [FromServices] GetProfileUseCase useCase) =>
@@ -29,6 +30,7 @@ public static class ProfileEndpoints
             });
 
         //criar novo usuário
+        //mappost: colocar novos dados no banco
         app.MapPost("profile", async (
             [FromBody] CreateProfilePayload payload,
             [FromServices] CreateProfileUseCase useCase) =>
