@@ -1,6 +1,5 @@
 namespace Rplace.UseCase.RemovePlayer;
 
-public record RemovePlayerPayload 
-{
+public record RemovePlayerPayload(
 
-}
+);

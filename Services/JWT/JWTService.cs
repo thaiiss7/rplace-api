@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Rplace.Services.JWT;
 
+// implementa a interface para criar o jwt (código padrão)
 public class JWTService : IJWTService
 {
     public string CreateToken(ProfileToAuth data)

@@ -1,6 +1,5 @@
 namespace Rplace.UseCase.AcceptInvite;
 
-public record AcceptInvitePayload 
-{
+public record AcceptInvitePayload(
 
-}
+);
