@@ -20,7 +20,7 @@ public static class RoomEndpoints
                 };
             });
 
-            // acessar membros em uma sala
+            // acessar membros em uma sala (GetPlayer)
 
             // criar uma sala
             app.MapPost("room", async (
