@@ -43,12 +43,12 @@ public static class ProfileEndpoints
             });
 
         //editar usuário
-        app.MapPost("profile/{id}", async (
-            Guid id,
+        app.MapPost("profile/{username}", async (
+            string username,
             [FromBody] EditProfilePayload payload,
             [FromServices] EditProfileUseCase useCase) =>
             {
-                payload = payload with { UserId = id };
+                payload = payload with { Username = username };
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
