@@ -1,5 +1,6 @@
 namespace Rplace.UseCase.EditProfile;
 
 public record EditProfilePayload(
-    Guid UserId
+    Guid UserId,
+    string Username
 );
