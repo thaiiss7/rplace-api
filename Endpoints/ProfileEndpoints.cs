@@ -59,5 +59,14 @@ public static class ProfileEndpoints
                 };
             });
 
+        //deletar usuario
+        app.MapDelete("member/{room}", async(
+
+        ));
+
+        //atualizar plano do usuário
+        app.MapPost("plan/{userid}", async(
+
+        ));
     }
 }
