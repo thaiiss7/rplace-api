@@ -15,16 +15,16 @@ public static class ProfileEndpoints
         //mapget: serve para buscar dados
         app.MapGet("profile/{username}", async (
             string username,
-            [FromServices] GetProfileUseCase useCase) =>
+            [FromServices] GetProfileUseCase useCase) => // declara o username e o UseCase que vai ser usado
             {
                 var payload = new GetProfilePayload(username);
-                var result = await useCase.Do(payload);
+                var result = await useCase.Do(payload); // result são dados retornados pela UseCase (usando o payload)
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "User not found") => Results.NotFound(),
-                    (false, _) => Results.BadRequest(),
-                    (true, _) => Results.Ok(result.Data)
+                    (false, "User not found") => Results.NotFound(), // se o perfil não foi encontrado 
+                    (false, _) => Results.BadRequest(), // se as informações pedidas não foram passadas
+                    (true, _) => Results.Ok(result.Data) // se deu certo, retorna os dados pedidos
                 };
 
             });
@@ -33,22 +33,22 @@ public static class ProfileEndpoints
         //mappost: colocar novos dados no banco
         app.MapPost("profile", async (
             [FromBody] CreateProfilePayload payload,
-            [FromServices] CreateProfileUseCase useCase) =>
+            [FromServices] CreateProfileUseCase useCase) => // pede um payload e um UseCase que será usado
             {
                 var result = await useCase.Do(payload);
                 if (result.IsSuccess)
-                    return Results.Created();
+                    return Results.Created(); // se a requisição deu certo, informa que criou um perfil
 
-                return Results.BadRequest(result.Reason);
+                return Results.BadRequest(result.Reason); // se não, informa que não teve informações suficientes
             });
 
-        //editar usuário
+        //editar usuário (perguntar pro trevis)
         app.MapPost("profile/{username}", async (
             string username,
             [FromBody] EditProfilePayload payload,
             [FromServices] EditProfileUseCase useCase) =>
             {
-                payload = payload with { Username = username };
+                payload = payload with { Username = username }; // procura um payload com o mesmo username passado
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch

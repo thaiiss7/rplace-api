@@ -22,8 +22,8 @@ public static class RoomEndpoints
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-            }
-        );
+              
+            });
 
         // criar uma sala
         app.MapPost("room", async (
@@ -36,7 +36,6 @@ public static class RoomEndpoints
                     return Results.Created();
 
                 return Results.BadRequest(result.Reason);
-            }
-        );
+            });
     }
 }
