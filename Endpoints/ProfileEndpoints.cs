@@ -42,7 +42,7 @@ public static class ProfileEndpoints
                 return Results.BadRequest(result.Reason); // se não, informa que não teve informações suficientes
             });
 
-        //editar usuário
+        //editar usuário (perguntar pro trevis)
         app.MapPost("profile/{username}", async (
             string username,
             [FromBody] EditProfilePayload payload,
