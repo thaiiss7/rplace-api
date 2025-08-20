@@ -7,7 +7,7 @@ public static class RoomEndpoints
         // acessar uma sala
         app.MapGet("room/{name}", async (
             string name,
-            [FromServices]GetRoomUseCase useCase) =>
+            [FromServices] GetRoomUseCase useCase) =>
             {
                 var payload = new GetRoomPayload(name);
                 var result = await useCase.Do(payload);
@@ -18,21 +18,22 @@ public static class RoomEndpoints
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-            });
+            }
+        );
 
-            // acessar membros em uma sala
 
-            // criar uma sala
-            app.MapPost("room", async (
-            [FromBody]CreateRoomPayload payload,
-            [FromServices]CreateRoomUseCase useCase) =>
+        // criar uma sala
+        app.MapPost("room", async (
+            [FromBody] CreateRoomPayload payload,
+            [FromServices] CreateRoomUseCase useCase) =>
             {
                 var result = await useCase.Do(payload);
-            
+
                 if (result.IsSuccess)
-                return Results.Created();
-            
+                    return Results.Created();
+
                 return Results.BadRequest(result.Reason);
-            });
+            }
+        );
     }
 }
