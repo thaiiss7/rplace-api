@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.ColorPixel;
+using Rplace.UseCase.GetPixel;
 
 namespace Rplace.Endpoints;
 
@@ -8,11 +9,11 @@ public static class PixelEndpoints
     public static void ConfigurePixelEndpoints(this WebApplication app)
     {
 
-        app.MapGet("pixel/{room}", async (
-         
+        app.MapGet("pixel/{roomId}", async (
+            Guid roomId,
             [FromServices] GetPixelUseCase useCase) =>
             {
-                var payload = new GetPixelPayload();
+                var payload = new GetPixelPayload(roomId);
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
