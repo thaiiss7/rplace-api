@@ -3,6 +3,8 @@ using Rplace.UseCase.ColorPixel;
 using Rplace.UseCase.CreateProfile;
 using Rplace.UseCase.EditProfile;
 using Rplace.UseCase.GetProfile;
+using Rplace.UseCase.RemovePlayer;
+using Rplace.UseCase.UpgradePlan;
 
 namespace Rplace.Endpoints;
 
@@ -59,14 +61,34 @@ public static class ProfileEndpoints
                 };
             });
 
-        //deletar usuario
-        app.MapDelete("member/{room}", async(
+        //remove um membro de uma sala
+        app.MapPost("/remove", async (
+            [FromBody] RemovePlayerPayload payload,
+            [FromServices] RemovePlayerUseCase useCase) =>
+            {
+                var result = await useCase.Do(payload);
 
-        ));
+                return (result.IsSuccess, result.Reason) switch
+                {
+                    (false, "Profile not found") => Results.NotFound(),
+                    (false, _) => Results.BadRequest(),
+                    (true, _) => Results.Ok()
+                };
+            });
 
-        //atualizar plano do usuário
-        app.MapPost("plan/{userid}", async(
+        //trocar de plano
+        app.MapPost("/plan", async (
+            [FromBody] UpgradePlanPayload payload,
+            [FromServices] UpgradePlanUseCase useCase) =>
+            {
+                var result = await useCase.Do(payload);
 
-        ));
+                return (result.IsSuccess, result.Reason) switch
+                {
+                    (false, "Profile not found") => Results.NotFound(),
+                    (false, _) => Results.BadRequest(),
+                    (true, _) => Results.Ok()
+                };
+            });
     }
 }
