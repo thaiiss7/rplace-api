@@ -25,18 +25,10 @@ public static class RoomEndpoints
             }
         );
 
-
-<<<<<<< HEAD
         // criar uma sala
         app.MapPost("room", async (
             [FromBody] CreateRoomPayload payload,
             [FromServices] CreateRoomUseCase useCase) =>
-=======
-            // criar uma sala
-        app.MapPost("room", async (
-            [FromBody]CreateRoomPayload payload,
-            [FromServices]CreateRoomUseCase useCase) =>
->>>>>>> c294b19077d5ebe72cece3226fee6667b995ec0b
             {
                 var result = await useCase.Do(payload);
 

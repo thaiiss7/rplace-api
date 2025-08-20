@@ -22,7 +22,6 @@ public static class PlanEndpoints
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-            }
-        );
+            });
     }
 }

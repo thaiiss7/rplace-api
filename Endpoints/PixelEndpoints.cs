@@ -8,7 +8,7 @@ public static class PixelEndpoints
     public static void ConfigurePixelEndpoints(this WebApplication app)
     {
 
-        _ = app.MapGet("pixel/{room}", async (
+        app.MapGet("pixel/{room}", async (
          
             [FromServices] GetPixelUseCase useCase) =>
             {
@@ -23,7 +23,7 @@ public static class PixelEndpoints
                 };
             });
 
-        _ = app.MapPost("color", async (
+        app.MapPost("color", async (
             [FromBody] ColorPixelPayload payload,
             [FromServices] ColorPixelUseCase useCase) =>
             {
