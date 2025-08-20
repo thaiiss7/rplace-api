@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using Rplace.UseCase.CreateRoom;
+using Rplace.UseCase.GetRoom;
+
 namespace Rplace.Endpoints;
 
 public static class RoomEndpoints
@@ -23,7 +27,7 @@ public static class RoomEndpoints
             // acessar membros em uma sala
 
             // criar uma sala
-            app.MapPost("room", async (
+        app.MapPost("room", async (
             [FromBody]CreateRoomPayload payload,
             [FromServices]CreateRoomUseCase useCase) =>
             {
