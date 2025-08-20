@@ -24,18 +24,16 @@ public static class PixelEndpoints
                 };
             });
 
-        app.MapPost("color", async (
+        app.MapPost("pixel", async (
             [FromBody] ColorPixelPayload payload,
             [FromServices] ColorPixelUseCase useCase) =>
             {
                 var result = await useCase.Do(payload);
 
-                return (result.IsSuccess, result.Reason) switch
-                {
-                    (false, "Pixel not found") => Results.NotFound(),
-                    (false, _) => Results.BadRequest(),
-                    (true, _) => Results.Ok(result.Data)
-                };
+                if (result.IsSuccess)
+                    return Results.Created();
+
+                return Results.BadRequest(result.Reason);
             });
     }
 }

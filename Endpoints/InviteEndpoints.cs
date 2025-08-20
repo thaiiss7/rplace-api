@@ -9,7 +9,7 @@ public static class InviteEndpoints
     public static void ConfigureInviteEndpoints(this WebApplication app)
     {
         //AcceptInvite
-        app.MapPost("/accept", async (
+        app.MapPost("invite/accept", async (
             [FromBody] AcceptinvitePayload payload,
             [FromServices] AccepteInviteUseCase useCase) =>
             {
@@ -17,7 +17,7 @@ public static class InviteEndpoints
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "Pin not found") => Results.NotFound(),
+                    (false, "Invite not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
@@ -36,23 +36,20 @@ public static class InviteEndpoints
                 return Results.BadRequest(result.Reason);
             });
 
-        //GetInvite
-        app.MapGet("invite/{id}", async (
-            Guid id,
+        //GetInvite listar
+        app.MapGet("invite/{userId}", async (
+            Guid userId,
             [FromServices] GetInviteUseCase useCase) =>
             {
-                var claim = http.User.FindFirst(ClaimTypes.NameIdentifier);
-                var userId = Guid.Parse(claim.Value);
-                var pinId = Guid.Parse(id);
-                var payload = new GetInvitePayload(id, userId);
+                var payload = new GetInvitePayload(userId);
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "User not found") => Results.NotFound(),
+                    (false, "Invite not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-            }).RequireAuthorization();
+            });
     }
 }

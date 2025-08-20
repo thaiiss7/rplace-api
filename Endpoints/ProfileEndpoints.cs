@@ -45,7 +45,7 @@ public static class ProfileEndpoints
             });
 
         //editar usuário (perguntar pro trevis)
-        app.MapPost("profile/{username}", async (
+        app.MapPut("profile", async (
             string username,
             [FromBody] EditProfilePayload payload,
             [FromServices] EditProfileUseCase useCase) =>
@@ -61,34 +61,5 @@ public static class ProfileEndpoints
                 };
             });
 
-        //remove um membro de uma sala
-        app.MapPost("/remove", async (
-            [FromBody] RemovePlayerPayload payload,
-            [FromServices] RemovePlayerUseCase useCase) =>
-            {
-                var result = await useCase.Do(payload);
-
-                return (result.IsSuccess, result.Reason) switch
-                {
-                    (false, "Profile not found") => Results.NotFound(),
-                    (false, _) => Results.BadRequest(),
-                    (true, _) => Results.Ok()
-                };
-            });
-
-        //trocar de plano
-        app.MapPost("/plan", async (
-            [FromBody] UpgradePlanPayload payload,
-            [FromServices] UpgradePlanUseCase useCase) =>
-            {
-                var result = await useCase.Do(payload);
-
-                return (result.IsSuccess, result.Reason) switch
-                {
-                    (false, "Profile not found") => Results.NotFound(),
-                    (false, _) => Results.BadRequest(),
-                    (true, _) => Results.Ok()
-                };
-            });
     }
 }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.CreateRoom;
 using Rplace.UseCase.GetRoom;
+using Rplace.UseCase.GetPlayer;
+using Rplace.UseCase.RemovePlayer;
 
 namespace Rplace.Endpoints;
 
@@ -22,16 +24,14 @@ public static class RoomEndpoints
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-              
+
             });
 
         // acessar membros em uma sala (GetPlayer)
-        app.MapGet("member/{room}/{userId}", async (
-            Guid roomId,
-            Guid userId,
+        app.MapGet("room/members", async (
+            [FromBody] GetPlayerPayload payload,
             [FromServices] GetPlayerUseCase useCase) =>
             {
-                var payload = GetPlayerPayload(roomId, userId);
                 var result = useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
@@ -54,6 +54,21 @@ public static class RoomEndpoints
                     return Results.Created();
 
                 return Results.BadRequest(result.Reason);
+            });
+            
+        //remove um membro de uma sala
+        app.MapPut("/remove", async (
+            [FromBody] RemovePlayerPayload payload,
+            [FromServices] RemovePlayerUseCase useCase) =>
+            {
+                var result = await useCase.Do(payload);
+
+                return (result.IsSuccess, result.Reason) switch
+                {
+                    (false, "Profile not found") => Results.NotFound(),
+                    (false, _) => Results.BadRequest(),
+                    (true, _) => Results.Ok()
+                };
             });
     }
 }

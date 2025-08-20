@@ -17,7 +17,8 @@ public class JWTService : IJWTService
         var jwt = new JwtSecurityToken(
             claims: [
                 new Claim(ClaimTypes.NameIdentifier, data.ProfileId.ToString()),
-                new Claim(ClaimTypes.Name, data.Username)
+                new Claim(ClaimTypes.Name, data.Username),
+                // new Claim(ClaimTypes.Gay, "maybe"),
             ],
             expires: DateTime.UtcNow.AddHours(2),
             signingCredentials: new SigningCredentials(
