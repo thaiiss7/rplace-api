@@ -6,6 +6,7 @@ public static class RoleEndpoints
 {
     public static void ConfigureRoleEndpoints(this WebApplication app)
     {
+        // mudar plano de um usuário
         app.MapPut("role", async (
             [FromBody] PromotePlayerPayload payload,
             [FromServices] PromotePlayerUseCase useCase) =>

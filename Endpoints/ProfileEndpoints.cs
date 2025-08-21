@@ -8,13 +8,12 @@ using Rplace.UseCase.UpgradePlan;
 
 namespace Rplace.Endpoints;
 
-//implementar usecases com contrutores
 public static class ProfileEndpoints
 {
     public static void ConfigureProfileEndpoints(this WebApplication app)
     {
-        //buscar dados de um usuário
-        //mapget: serve para buscar dados
+        // buscar dados de um usuário
+        // mapget: serve para buscar dados
         app.MapGet("profile/{username}", async (
             string username,
             [FromServices] GetProfileUseCase useCase) => // declara o username e o UseCase que vai ser usado
@@ -31,8 +30,8 @@ public static class ProfileEndpoints
 
             });
 
-        //criar novo usuário
-        //mappost: colocar novos dados no banco
+        // criar novo usuário
+        // mappost: colocar novos dados no banco
         app.MapPost("profile", async (
             [FromBody] CreateProfilePayload payload,
             [FromServices] CreateProfileUseCase useCase) => // pede um payload e um UseCase que será usado
@@ -44,7 +43,7 @@ public static class ProfileEndpoints
                 return Results.BadRequest(result.Reason); // se não, informa que não teve informações suficientes
             });
 
-        //editar usuário (perguntar pro trevis)
+        // editar usuário (perguntar pro trevis)
         app.MapPut("profile", async (
             string username,
             [FromBody] EditProfilePayload payload,

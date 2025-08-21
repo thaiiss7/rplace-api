@@ -8,7 +8,7 @@ public static class PixelEndpoints
 {
     public static void ConfigurePixelEndpoints(this WebApplication app)
     {
-
+        // mostrar os pixels de uma sala
         app.MapGet("pixel/{roomId}", async (
             Guid roomId,
             [FromServices] GetPixelUseCase useCase) =>
@@ -24,6 +24,7 @@ public static class PixelEndpoints
                 };
             });
 
+        // pintar um pixel
         app.MapPost("pixel", async (
             [FromBody] ColorPixelPayload payload,
             [FromServices] ColorPixelUseCase useCase) =>

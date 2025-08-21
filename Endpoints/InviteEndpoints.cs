@@ -8,8 +8,8 @@ public static class InviteEndpoints
 {
     public static void ConfigureInviteEndpoints(this WebApplication app)
     {
-        //AcceptInvite
-        app.MapPost("invite/accept", async (
+        // aceitar um convite
+        app.MapPut("invite/accept", async (
             [FromBody] AcceptinvitePayload payload,
             [FromServices] AccepteInviteUseCase useCase) =>
             {
@@ -23,7 +23,7 @@ public static class InviteEndpoints
                 };
             });
 
-        //InvitePlayer
+        // fazer um convite
         app.MapPost("invite", async (
             [FromBody] InvitePlayerPayload payload,
             [FromServices] InvitePlayerUseCase useCase) =>
@@ -36,7 +36,7 @@ public static class InviteEndpoints
                 return Results.BadRequest(result.Reason);
             });
 
-        //GetInvite listar
+        // listar convites de um usuário
         app.MapGet("invite/{userId}", async (
             Guid userId,
             [FromServices] GetInviteUseCase useCase) =>

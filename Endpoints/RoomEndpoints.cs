@@ -27,7 +27,7 @@ public static class RoomEndpoints
 
             });
 
-        // acessar membros em uma sala (GetPlayer)
+        // acessar membros em uma sala
         app.MapGet("room/members", async (
             [FromBody] GetPlayerPayload payload,
             [FromServices] GetPlayerUseCase useCase) =>
@@ -36,7 +36,7 @@ public static class RoomEndpoints
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "Room or User not found") => Results.NotFound(),
+                    (false, "Room not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
@@ -65,7 +65,7 @@ public static class RoomEndpoints
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "Profile not found") => Results.NotFound(),
+                    (false, "Room not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok()
                 };

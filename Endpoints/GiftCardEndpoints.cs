@@ -4,8 +4,8 @@ public static class GiftCards
 {
     public static void ConfigureGiftCardEndpoints(this WebApplication app)
     {
-        //trocar de plano
-        app.MapPost("/plan", async (
+        // trocar de plano
+        app.MapPut("/plan", async (
             [FromBody] UpgradePlanPayload payload,
             [FromServices] UpgradePlanUseCase useCase) =>
             {
