@@ -10,12 +10,12 @@ public static class RoomEndpoints
 {
     public static void ConfigureRoomEndpoints(this WebApplication app)
     {
-        // acessar uma sala
-        app.MapGet("room/{name}", async (
-            string name,
+        // acessar salas
+        app.MapGet("room/{id}", async (
+            Guid id,
             [FromServices] GetRoomUseCase useCase) =>
             {
-                var payload = new GetRoomPayload(name);
+                var payload = new GetRoomPayload(id);
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
