@@ -29,7 +29,7 @@ public static class InviteEndpoints
             [FromBody] InvitePlayerPayload payload,
             [FromServices] InvitePlayerUseCase useCase) =>
             {
-                var result = await InvitePlayerUseCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 if (result.IsSuccess)
                     return Results.Created();
