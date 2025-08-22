@@ -32,7 +32,7 @@ public static class RoomEndpoints
             [FromBody] GetPlayerPayload payload,
             [FromServices] GetPlayerUseCase useCase) =>
             {
-                var result = useCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {

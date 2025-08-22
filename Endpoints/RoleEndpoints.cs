@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.PromotePlayer;
 
 namespace Rplace.Endpoints;
@@ -11,7 +12,7 @@ public static class RoleEndpoints
             [FromBody] PromotePlayerPayload payload,
             [FromServices] PromotePlayerUseCase useCase) =>
             {
-                var result = useCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
