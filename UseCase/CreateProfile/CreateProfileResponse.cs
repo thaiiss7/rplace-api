@@ -1,5 +1,3 @@
 namespace Rplace.UseCase.CreatProfile;
 
-public record CreateProfileResponse(
-
-);
+public record CreateProfileResponse;
