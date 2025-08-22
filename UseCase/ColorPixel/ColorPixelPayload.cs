@@ -1,5 +1,10 @@
 namespace Rplace.UseCase.ColorPixel;
 
 public record ColorPixelPayload(
-    Guid id
+    int X,
+    int Y,
+    int Red,
+    int Green,
+    int Blue,
+    Guid RoomId
 );
