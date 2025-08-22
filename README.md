@@ -38,11 +38,13 @@ Passos:
   - Implementar Endpoints (ex: MapPost) usando UseCases (no mínimo 1 endpoint para cada UseCase):
       - OBS: A quantidade de páginas .cs na pasta Endpoints deve ter a mesma quantidade de classes da pasta Models
       - Exemplo para iniciar a implementação: "Plan: mapget (plan/{id}) -> GetPlan"
-  - Configurar UseCases como serviços
+  - Definir serviços
+      - JWT (É o token de autentificação)
+      - Password (É a criptografia da senha)
+  - Implementar Payload e Response
+  - Implementar UseCases
 
 
-08.Configurar UseCases como serviços
-09.Definir Seviços
 10.Implementar UseCases
 11.Definir Testes (opcional kk)
 12.Implementar e Configurar Serviços (Configurar JWT)
