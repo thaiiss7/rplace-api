@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.AcceptInvite;
 using Rplace.UseCase.GetInvite;
 using Rplace.UseCase.InvitePlayer;
@@ -10,8 +11,8 @@ public static class InviteEndpoints
     {
         // aceitar um convite
         app.MapPut("invite/accept", async (
-            [FromBody] AcceptinvitePayload payload,
-            [FromServices] AccepteInviteUseCase useCase) =>
+            [FromBody] AcceptInvitePayload payload,
+            [FromServices] AcceptInviteUseCase useCase) =>
             {
                 var result = await useCase.Do(payload);
 
@@ -28,7 +29,7 @@ public static class InviteEndpoints
             [FromBody] InvitePlayerPayload payload,
             [FromServices] InvitePlayerUseCase useCase) =>
             {
-                var result = await InvitePlayerUseCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 if (result.IsSuccess)
                     return Results.Created();
