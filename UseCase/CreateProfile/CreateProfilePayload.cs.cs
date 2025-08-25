@@ -15,7 +15,11 @@ public record CreateProfilePayload
     [Required]
     [MinLength(8)]
     [NeedNumber]
-    // fazer outras validações
+    // (?=.*[a-z]): exige uma letra minúscula
+    // (?=.*[A-Z]): exige uma letra maiúscula
+    // (?=.*[\W_]): exige um caracter especial
+    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])$",
+        ErrorMessage = "The field Password must contain upper and lower cases")]
     public string Password { get; init; }
     [Required]
     [Compare("Password")]
