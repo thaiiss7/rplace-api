@@ -44,18 +44,17 @@ public static class ProfileEndpoints
                 return Results.BadRequest(result.Reason); // se não, informa que não teve informações suficientes
             });
 
-        //editar usuário (perguntar pro trevis)
-        app.MapPost("profile/{username}", async (
-            string username,
+        //editar usuário
+        app.MapPost("profile/edit", async (
             [FromBody] EditProfilePayload payload,
             [FromServices] EditProfileUseCase useCase) =>
             {
-                payload = payload with { Username = username }; // procura um payload com o mesmo username passado
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
                     (false, "Profile not found") => Results.NotFound(),
+                    (false, "Password invalid") => Results.Unauthorized(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok()
                 };
