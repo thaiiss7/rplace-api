@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.CreateRoom;
 using Rplace.UseCase.GetRoom;
+using Rplace.UseCase.GetPlayer;
+using Rplace.UseCase.RemovePlayer;
 
 namespace Rplace.Endpoints;
 
@@ -8,12 +10,12 @@ public static class RoomEndpoints
 {
     public static void ConfigureRoomEndpoints(this WebApplication app)
     {
-        // acessar uma sala
-        app.MapGet("room/{name}", async (
-            string name,
+        // acessar salas
+        app.MapGet("room/{id}", async (
+            Guid id,
             [FromServices] GetRoomUseCase useCase) =>
             {
-                var payload = new GetRoomPayload(name);
+                var payload = new GetRoomPayload(id);
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
@@ -22,21 +24,19 @@ public static class RoomEndpoints
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-              
+
             });
 
-        // acessar membros em uma sala (GetPlayer)
-        app.MapGet("member/{room}/{userId}", async (
-            Guid roomId,
-            Guid userId,
+        // acessar membros em uma sala
+        app.MapGet("room/members", async (
+            [FromBody] GetPlayerPayload payload,
             [FromServices] GetPlayerUseCase useCase) =>
             {
-                var payload = GetPlayerPayload(roomId, userId);
-                var result = useCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "Room or User not found") => Results.NotFound(),
+                    (false, "Room not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
@@ -54,6 +54,21 @@ public static class RoomEndpoints
                     return Results.Created();
 
                 return Results.BadRequest(result.Reason);
+            });
+            
+        //remove um membro de uma sala
+        app.MapPut("/remove", async (
+            [FromBody] RemovePlayerPayload payload,
+            [FromServices] RemovePlayerUseCase useCase) =>
+            {
+                var result = await useCase.Do(payload);
+
+                return (result.IsSuccess, result.Reason) switch
+                {
+                    (false, "Room not found") => Results.NotFound(),
+                    (false, _) => Results.BadRequest(),
+                    (true, _) => Results.Ok()
+                };
             });
     }
 }

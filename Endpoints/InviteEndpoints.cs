@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Rplace.UseCase.AcceptInvite;
 using Rplace.UseCase.GetInvite;
 using Rplace.UseCase.InvitePlayer;
@@ -8,27 +9,27 @@ public static class InviteEndpoints
 {
     public static void ConfigureInviteEndpoints(this WebApplication app)
     {
-        //AcceptInvite
-        app.MapPost("/accept", async (
-            [FromBody] AcceptinvitePayload payload,
-            [FromServices] AccepteInviteUseCase useCase) =>
+        // aceitar um convite
+        app.MapPut("invite/accept", async (
+            [FromBody] AcceptInvitePayload payload,
+            [FromServices] AcceptInviteUseCase useCase) =>
             {
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "Pin not found") => Results.NotFound(),
+                    (false, "Invite not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
             });
 
-        //InvitePlayer
+        // fazer um convite
         app.MapPost("invite", async (
             [FromBody] InvitePlayerPayload payload,
             [FromServices] InvitePlayerUseCase useCase) =>
             {
-                var result = await InvitePlayerUseCase.Do(payload);
+                var result = await useCase.Do(payload);
 
                 if (result.IsSuccess)
                     return Results.Created();
@@ -36,23 +37,20 @@ public static class InviteEndpoints
                 return Results.BadRequest(result.Reason);
             });
 
-        //GetInvite
-        app.MapGet("invite/{id}", async (
-            Guid id,
+        // listar convites de um usuário
+        app.MapGet("invite/{userId}", async (
+            Guid userId,
             [FromServices] GetInviteUseCase useCase) =>
             {
-                var claim = http.User.FindFirst(ClaimTypes.NameIdentifier);
-                var userId = Guid.Parse(claim.Value);
-                var pinId = Guid.Parse(id);
-                var payload = new GetInvitePayload(id, userId);
+                var payload = new GetInvitePayload(userId);
                 var result = await useCase.Do(payload);
 
                 return (result.IsSuccess, result.Reason) switch
                 {
-                    (false, "User not found") => Results.NotFound(),
+                    (false, "Invite not found") => Results.NotFound(),
                     (false, _) => Results.BadRequest(),
                     (true, _) => Results.Ok(result.Data)
                 };
-            }).RequireAuthorization();
+            });
     }
 }
