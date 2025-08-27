@@ -25,7 +25,7 @@ public class LoginUseCase(
             return Result<LoginResponse>.Fail("User not found");
 
         var jwt = jWTService.CreateToken(new(
-            user.ID, user.Username
+            user.ID, user.Username, user.PlanId
         )); // cria um jwt usando o id e username do usuário
 
         return Result<LoginResponse>.Success(new LoginResponse(jwt));
