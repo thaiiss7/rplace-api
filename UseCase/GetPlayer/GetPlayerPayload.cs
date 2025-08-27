@@ -1,6 +1,5 @@
 namespace Rplace.UseCase.GetPlayer;
 
-public record GetPlayerPayload 
-{
-
-}
+public record GetPlayerPayload(
+    Guid RoomId
+);

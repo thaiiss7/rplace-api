@@ -1,5 +1,6 @@
 namespace Rplace.Services.Password;
 
+// interface com funções para fazer o hash (criptografia) e comparar as senhas
 public interface IPasswordService
 {
     string Hash(string password);

@@ -1,6 +1,5 @@
 namespace Rplace.UseCase.GetInvite;
 
-public record GetInvitePayload 
-{
-
-}
+public record GetInvitePayload(
+    Guid UserId
+);
