@@ -1,10 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+using Rplace.Models;
+
 namespace Rplace.UseCase.GetPlayer;
 
-public class GetPlayerUseCase
+public class GetPlayerUseCase(rplaceDbContext ctx)
 {
     public async Task<Result<GetPlayerResponse>> Do(GetPlayerPayload payload)
     {
-        
+        var room = await ctx.Rooms
+        .FirstOrDefaultAsync(r => r.ID == payload.RoomId);
+
+        var response = new GetPlayerResponse
+        (
+            from m in room.Members
+            select new GetPlayerData
+            {
+                Username = m.Username,
+                Link = m.Link
+            }
+        );
+
 
         return Result<GetPlayerResponse>.Success(null);
     }

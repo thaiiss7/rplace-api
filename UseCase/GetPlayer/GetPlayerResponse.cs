@@ -7,5 +7,4 @@ public record GetPlayerData(
 
 public record GetPlayerResponse(
     ICollection<GetPlayerData> Members
-
 );
