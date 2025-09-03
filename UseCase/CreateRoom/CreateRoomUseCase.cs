@@ -28,6 +28,6 @@ public class CreateRoomUseCase(rplaceDbContext ctx)
             return Result<CreateRoomResponse>.Success(new(room.ID));
         }
 
-        return Result<CreateRoomResponse>.Fail("");
+        return Result<CreateRoomResponse>.Fail("Not availble in your plan");
     }
 }
