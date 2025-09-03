@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Rplace.Models;
 
 namespace Rplace.UseCase.GetInvite;
@@ -10,7 +11,7 @@ public class GetInviteUseCase(rplaceDbContext ctx)
         .FirstOrDefaultAsync(i => i.SenderId == payload.UserId);
 
         var response = new GetInviteResponse(
-            invite.Accept,
+            invite.Accepted,
             invite.SenderId,
             invite.RoomId
         );
