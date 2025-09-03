@@ -7,17 +7,16 @@ public class PromotePlayerUseCase(rplaceDbContext ctx)
 {
     public async Task<Result<PromotePlayerResponse>> Do(PromotePlayerPayload payload)
     {
-        var roleIDUser = await ctx.Roles.FirstOrDefaultAsync(r => r.ID == payload.RoleId);
-        var roleUser = roleIDUser.Name;
-        
-        var roleIDPromoter = await ctx.Roles.FirstOrDefaultAsync(r => r.ID == payload)
+        var user = await ctx.Profiles.FirstOrDefaultAsync(u => u.ID == payload.UserId);
+        var promoter = await ctx.Profiles.FirstOrDefaultAsync(p => p.ID == payload.PromoterId);
 
-        if (role == "Dono")
-        {
+        var room = await ctx.Rooms
+        .Include(r => r.Members)
+            .ThenInclude(m => m.ID)
+        .Include()
 
-        }
-        else if (role == "Administrador")
+        .FirstOrDefaultAsync(r => r.ID == payload.RoomId);
 
-            return Result<PromotePlayerResponse>.Success(null);
+        return Result<PromotePlayerResponse>.Success(null);
     }
 }
