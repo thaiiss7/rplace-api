@@ -1,6 +1,8 @@
+using Rplace.Models;
+
 namespace Rplace.UseCase.UpgradePlan;
 
-public class UpgradePlanUseCase
+public class UpgradePlanUseCase(rplaceDbContext ctx)
 {
     public async Task<Result<UpgradePlanResponse>> Do(UpgradePlanPayload payload)
     {

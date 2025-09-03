@@ -14,6 +14,8 @@ public class rplaceDbContext(DbContextOptions<rplaceDbContext> options) : DbCont
     public DbSet<GiftCard> GiftCards => Set<GiftCard>();
     public DbSet<ItemRoom> ItemRooms => Set<ItemRoom>();
 
+    public object Role { get; internal set; }
+
     protected override void OnModelCreating(ModelBuilder model)
     {
         model.Entity<Profile>()
