@@ -9,5 +9,5 @@ public record GetPixelData(
 );
 
 public record GetPixelResponse(
-    ICollection<GetPixelData> Pixels
+    IEnumerable<GetPixelData> Pixels
 );

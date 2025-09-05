@@ -12,7 +12,14 @@ public class GetPixelUseCase(rplaceDbContext ctx)
 
         var response = new GetPixelResponse
         (
-            room.Pixels
+            from p in room.Pixels
+            select new GetPixelData(
+                p.X,
+                p.Y,
+                p.Red,
+                p.Green,
+                p.Blue
+            )
         );
 
         return Result<GetPixelResponse>.Success(response);
