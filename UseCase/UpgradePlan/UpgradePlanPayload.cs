@@ -3,6 +3,7 @@ using Rplace.Models;
 namespace Rplace.UseCase.UpgradePlan;
 
 public record UpgradePlanPayload(
-    Guid Userid,
-    Plan Plan
+    Guid UserId,
+    Guid PlanId,
+    int Code
 );

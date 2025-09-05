@@ -1,9 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Rplace.Models;
+
 namespace Rplace.UseCase.GetPlan;
 
-public class GetPlanUseCase
+public class GetPlanUseCase(rplaceDbContext ctx)
 {
     public async Task<Result<GetPlanResponse>> Do(GetPlanPayload payload)
     {
-        return Result<GetPlanResponse >.Success(null);
+        var plan = await ctx.Plans
+        .FirstOrDefaultAsync(p => p.ID == payload.PlanId);
+
+        var response = new GetPlanResponse
+        (
+            plan.Name,
+            plan.RoomSize
+        );
+
+        return Result<GetPlanResponse>.Success(response);
     }
 }

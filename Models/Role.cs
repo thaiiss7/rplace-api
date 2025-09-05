@@ -3,8 +3,9 @@ namespace Rplace.Models;
 public class Role
 {
     public Guid ID { get; set; }
-    public Guid ProfileId { get; set; }
-    public Profile RoleProfile { get; set; }
+    public string Name { get; set; }
+    public int Level { get; set; } //nível
+    public ICollection<Profile> Profiles { get; set; }
     public Guid RoomId { get; set; }
     public Room RoleRoom { get; set; }
     public ItemRoom ItemRoom { get; set; }
