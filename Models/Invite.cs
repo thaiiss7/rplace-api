@@ -10,4 +10,9 @@ public class Invite
     public Guid RoomId { get; set; }
     public Room InviteRoom { get; set; }
     public bool Accepted { get; set; } = false;
+
+    public static implicit operator Invite(Invite v)
+    {
+        throw new NotImplementedException();
+    }
 }
