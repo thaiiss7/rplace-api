@@ -25,6 +25,17 @@ Passos:
       - dotnet add package Microsoft.EntityFrameworkCore.Tools
       - dotnet add package Microsoft.EntityFrameworkCore.Design
       - dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+     
+     - Extras:
+      - dotnet add package xunit
+      - dotnet add package xunit.runner.visualstudio
+      - dotnet add package Microsoft.NET.Test.Sdk
+      - dotnet add package Moq
+   
+      - dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+
+      - dotnet add package Swashbuckle.AspNetCore
+
         
   - Criar Models (classes);
       - Observações:
