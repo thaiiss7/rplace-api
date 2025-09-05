@@ -12,8 +12,8 @@ using Rplace.Models;
 namespace rplace_api.Migrations
 {
     [DbContext(typeof(rplaceDbContext))]
-    [Migration("20250808193658_InitialModel")]
-    partial class InitialModel
+    [Migration("20250905164114_Model")]
+    partial class Model
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,9 @@ namespace rplace_api.Migrations
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Accepted")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("Receiverid")
                         .HasColumnType("uniqueidentifier");
@@ -120,6 +123,13 @@ namespace rplace_api.Migrations
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomSize")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

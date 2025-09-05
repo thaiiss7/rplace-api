@@ -15,7 +15,9 @@ namespace rplace_api.Migrations
                 name: "Plans",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomSize = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +48,8 @@ namespace rplace_api.Migrations
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Receiverid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Accepted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

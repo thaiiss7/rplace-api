@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Rplace.Models;
 
@@ -77,5 +78,16 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
             .OnDelete(DeleteBehavior.NoAction);
 
         model.Entity<ItemRoom>();
+    }
+}
+
+public class rplaceDbContextFactory : IDesignTimeDbContextFactory<rplaceDbContext>
+{
+    public rplaceDbContext CreateDbContext(string[] args)
+    {
+        var options = new DbContextOptionsBuilder<rplaceDbContext>();
+        var sqlConn = Environment.GetEnvironmentVariable("SQL_CONNECTION");
+        options.UseSqlServer(sqlConn);
+        return new rplaceDbContext(options.Options);
     }
 }
