@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Rplace.Models;
 
-public class rplaceDbContext(DbContextOptions options) : DbContext(options)
+public class rplaceDbContext(DbContextOptions<rplaceDbContext> options) : DbContext(options)
 {
     public DbSet<Profile> Profiles => Set<Profile>();
     public DbSet<Room> Rooms => Set<Room>();
@@ -13,6 +13,8 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<Plan> Plans => Set<Plan>();
     public DbSet<GiftCard> GiftCards => Set<GiftCard>();
     public DbSet<ItemRoom> ItemRooms => Set<ItemRoom>();
+
+    public object Role { get; internal set; }
 
     protected override void OnModelCreating(ModelBuilder model)
     {
@@ -81,7 +83,7 @@ public class rplaceDbContext(DbContextOptions options) : DbContext(options)
     }
 }
 
-public class rplaceDbContextFactory : IDesignTimeDbContextFactory<rplaceDbContext>
+public class RplaceDbContextFactory : IDesignTimeDbContextFactory<rplaceDbContext>
 {
     public rplaceDbContext CreateDbContext(string[] args)
     {
