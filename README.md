@@ -40,7 +40,7 @@ Passos:
       - dotnet tool install --global dotnet-ef
       - dotnet ef migrations add InitialModel
       - dotnet ef database update
-      - OBS: se mudar algo na pasta Models, deve fazer update novamente
+      - OBS: se mudar algo na pasta Models, deve fazer add InitialModel e update novamente
         
   - Definir UseCases (ações como: criar, editar, deletar)
     
@@ -60,8 +60,6 @@ Passos:
     
   - Implementar UseCases
 
+  - Implementar e Configurar Serviços (Configurar JWT)
 
-10.Implementar UseCases
-11.Definir Testes (opcional kk)
-12.Implementar e Configurar Serviços (Configurar JWT)
-13.Habilitar Swagger
+  - Habilitar Swagger
