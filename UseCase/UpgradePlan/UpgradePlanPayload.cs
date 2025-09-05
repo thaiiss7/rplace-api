@@ -4,5 +4,6 @@ namespace Rplace.UseCase.UpgradePlan;
 
 public record UpgradePlanPayload(
     Guid UserId,
-    Plan Plan
+    Guid PlanId,
+    int Code
 );
