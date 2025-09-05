@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Rplace.Endpoints;
 using Rplace.Models;
 using Rplace.Services.JWT;
 using Rplace.Services.Password;
@@ -71,6 +72,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.ConfigureAuthEndpoints();
+app.ConfigureGiftCardEndpoints();
+app.ConfigureInviteEndpoints();
+app.ConfigurePixelEndpoints();
+app.ConfigurePlanEndpoints();
+app.ConfigureProfileEndpoints();
+app.ConfigureRoleEndpoints();
+app.ConfigureRoomEndpoints();
 
 app.Run();
