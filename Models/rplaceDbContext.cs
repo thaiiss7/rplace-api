@@ -91,6 +91,5 @@ public class RplaceDbContextFactory : IDesignTimeDbContextFactory<rplaceDbContex
         var sqlConn = Environment.GetEnvironmentVariable("SQL_CONNECTION");
         options.UseSqlServer(sqlConn);
         return new rplaceDbContext(options.Options);
-
     }
 }
