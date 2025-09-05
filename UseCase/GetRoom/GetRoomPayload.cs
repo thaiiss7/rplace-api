@@ -1,5 +1,5 @@
 namespace Rplace.UseCase.GetRoom;
 
 public record GetRoomPayload(
-    Guid ProfileId
+    Guid RoomId
 );
