@@ -12,17 +12,13 @@ public class InvitePlayerUseCase(rplaceDbContext ctx)
             SenderId = payload.SenderId,
             RoomId = payload.RoomId,
             Accepted = payload.Accepted
-
         };
             
         ctx.Invites.Add(invite);
-
         await ctx.SaveChangesAsync();
 
         return Result<InvitePlayerResponse>.Success(new(invite.ID));
-
     }
-
 }
 
 
