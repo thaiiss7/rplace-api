@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Rplace.Data;
 using Rplace.UseCase.AcceptInvite;
 using Rplace.UseCase.GetInvite;
 using Rplace.UseCase.InvitePlayer;
@@ -11,10 +13,20 @@ public static class InviteEndpoints
     {
         // aceitar um convite
         app.MapPut("invite/accept", async (
-            [FromBody] AcceptInvitePayload payload,
+            HttpContext http,
+            [FromBody] AcceptInviteData payload,
             [FromServices] AcceptInviteUseCase useCase) =>
             {
-                var result = await useCase.Do(payload);
+                var claim = http.User.FindFirst(ClaimTypes.NameIdentifier);
+                if (claim is null)
+                    return Results.Unauthorized();
+                var id = Guid.Parse(claim.Value);
+
+                var result = await useCase.Do(new AcceptInvitePayload(
+                    payload.Accept,
+                    payload.InviteId,
+                    id
+                ));
 
                 return (result.IsSuccess, result.Reason) switch
                 {
