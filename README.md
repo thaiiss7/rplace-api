@@ -25,17 +25,20 @@ Passos:
       - dotnet add package Microsoft.EntityFrameworkCore.Tools
       - dotnet add package Microsoft.EntityFrameworkCore.Design
       - dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-     
+        
+        (jwt)
+      - dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+      - $env:JWT_SECRET="" (colocar dentro da string caracteres aleatórios para gerar o jwt)
+        
      - Extras:
+       (testes)
       - dotnet add package xunit
       - dotnet add package xunit.runner.visualstudio
       - dotnet add package Microsoft.NET.Test.Sdk
       - dotnet add package Moq
-   
-      - dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-
+        
+       (swagger)
       - dotnet add package Swashbuckle.AspNetCore
-
         
   - Criar Models (classes);
       - Observações:
@@ -74,3 +77,30 @@ Passos:
   - Implementar e Configurar Serviços (Configurar JWT)
 
   - Habilitar Swagger
+    - configurar no program
+    exemplo:
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    
+    builder.Services.AddAuthentication();
+    builder.Services.AddAuthorization();
+    
+    var app = builder.Build();
+    
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    
+    app.UseAuthentication();
+    app.UseAuthorization();
+ 
+    //endpoints
+    app.ConfigureAuthEndpoints();
+    app.ConfigurePostEndpoints();
+    app.ConfigureProfileEndpoints();
+    
+    - executar a api
+    
+    - abrir no localhost
+      http://localhost:5000/swagger
+    
+    app.Run();
